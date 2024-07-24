@@ -1,0 +1,39 @@
+let a = [1, 2, 3, 4, 5];
+
+ function add(a) {
+     return new Promise((resolve,reject)=>{
+         setTimeout(()=>{
+       let sum = 0;
+      a.forEach((data) => {
+      sum += data;
+     });
+     console.log(sum);
+     resolve();
+     },1000)
+   });
+     };
+
+
+
+function update(a) {
+  return new Promise((resolve,reject) => {
+    setTimeout(() => {
+      a.push(10);
+      resolve();
+    }, 5000);
+  });
+}
+
+ function adder(a) {
+setTimeout(()=>{
+   console.log(a);
+})
+}
+
+async function check()
+{
+    await update(a);
+    await add(a);
+    await adder(a);
+}
+check();
