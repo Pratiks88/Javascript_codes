@@ -1,0 +1,208 @@
+function fetchData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Data");
+        }, 1000);
+    });
+}
+
+function processData(data) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(`Processed ${data}`);
+        }, 1000);
+    });
+}
+
+fetchData().then(data =>{
+  processData(data).then(newdata=>{
+    console.log(newdata)
+  })
+})
+
+let a;
+console.log(a)
+console.log(typeof(a))
+
+console.log(a); // not an error bcoz var variables are hoisted and initialized as undefined 
+var a = 6;
+
+console.log(a);
+const a = 6;   // Reference error as let and const variables are hoisted but not initialized 
+
+if (true) {
+  var  x = 14;
+}
+console.log(x); // 10 (x is accessible outside the block)
+
+var x = 1;
+var x = 2; // No error, x is re-declared
+
+if (true) {
+  let y = 20;
+}
+console.log(y); // ReferenceError: y is not defined
+
+console.log(y); // ReferenceError: Cannot access 'y' before initialization
+
+// let y = 10;
+let y = 1;
+// let y = 2; // SyntaxError: Identifier 'y' has already been declared
+
+CONST 
+if (true) {
+  const z = 30;
+}
+console.log(z); // ReferenceError: z is not defined
+
+console.log(z); // ReferenceError: Cannot access 'z' before initialization
+const z = 15;
+
+const z = 1;
+// z = 2; // TypeError: Assignment to constant variable.
+const obj = { a: 1 };
+obj.a = 2; // No error, object property can be modified
+
+const arr = [1, 2, 3];
+arr.push(4); // No error, array elements can be modified
+
+let obj = {
+    name: 'Alice',
+    age: 25,
+    city: 'New York'
+};
+
+for (let key in obj) {
+    console.log(typeof(key)); //string
+    console.log(obj[key]); // printts alice 25 new york
+}
+
+let size=Object.keys(obj);
+console.log(size);
+for(let i in size)
+  {
+    console.log(obj[size[i]]);   for in loop traverses through index 
+  }  
+for(let i of size)
+  {
+     console.log(obj[i]);     for of loop travseres through values
+  }
+
+// different ways to copy an object
+// using spread operator doesnt create a refernce 
+let original = { 
+  name: 'Alice', 
+  age: 25,
+  address: 
+         { 
+           city: 'New York',
+           state: 'USA'
+         } 
+};
+let copy = { 
+  ...original 
+};
+original.age=34;
+console.log(copy);  //age still 25
+console.log(original); //age 34 
+
+// using just normal copy does referncing of orginal and copy
+let original = { 
+  name: 'Alice', 
+  age: 25,
+  address: 
+         { 
+           city: 'New York',
+           state: 'USA'
+         } 
+};
+let copy=original;
+original.age=34;
+console.log(copy);  //age 34
+console.log(original); //age 34 
+
+// Creating object using json  doesnt create a reference 
+let original = { 
+  name: 'Alice', 
+  age: 25,
+  address: 
+         { 
+           city: 'New York',
+           state: 'USA'
+         } 
+};
+let a=JSON.stringify(original);
+console.log(a);
+console.log(typeof(a));
+let b=JSON.parse(a);
+console.log(b);
+
+let a =[1,2,3,'hii',true]
+
+console.log(typeof(a)); //op=>bject 
+
+a.push(4); //pushes at end index op=> [1, 2, 3, 'hii', true, 4]
+console.log(a); 
+a.pop(); // removes an element from the last index  op=> [1, 2, 3, 'hii', true]
+console.log(a);
+a.unshift("shanbhag") // add an element at the begining of Arrays op-> ['shanbhag', 1, 2, 3, 'hii', true]
+console.log(a);
+a.shift(); //pop the element from the first op -> [1, 2, 3, 'hii', true]
+console.log(a);
+
+// Traversals in arrays 
+a.forEach(item=>{
+  console.log(item);
+});
+
+// for in loop (index based )
+for(let i in a)
+  {
+    console.log(a[i]);
+  }
+
+// for of loop (value based)
+for (let i of a)
+  {
+    console.log(i);
+  }
+
+function display()
+  {
+     console.log(p);
+  }
+const p=4;
+display();
+
+function sumer(j,k)
+  {
+    return j+k;
+  }
+console.log(typeof(sumer)); //function 
+let diff=function(j,k)
+  {
+    return j-k;
+  }
+function operator(operation,a,b)
+{
+  console.log(typeof(operation)); //op is a funnction 
+   return operation(a,b);
+}
+a=operator(diff,4,5);
+console.log(a)
+
+// Arrow functions 
+let sum=(a,b)=>
+  {
+    return a+b;
+  }
+let diff=(a,b)=>
+  {
+    return a-b;
+  }
+let operation=(oper,a,b)=>
+  {
+     return oper(a,b);
+  }
+
+console.log(operation(sum,6,10));
